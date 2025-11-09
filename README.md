@@ -1470,32 +1470,49 @@ Feature requests are welcome! Please provide:
 
 ## 📜 License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+## 📸 Screenshots
 
-```
-MIT License
+<details>
+<summary><b>🛍️ Click to view User Interface Screenshots</b></summary>
 
-Copyright (c) 2025 [Your Name]
+### Product Listing Page
+![Product Listing](screenshots/home.png)
+*Browse through our extensive product catalog with search and filter options*
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+### Shopping Cart
+![Shopping Cart](screenshots/cart.png)
+*Easy cart management with quantity updates and total calculation*
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+### Checkout Process
+![Checkout](screenshots/checkout.png)
+*Secure checkout with shipping address form*
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-```
+### Order History
+![Order History](screenshots/orders.png)
+*Track all your orders with status updates*
 
+</details>
+
+<details>
+<summary><b>👨‍💼 Click to view Admin Interface Screenshots</b></summary>
+
+### Admin Dashboard
+![Admin Dashboard](screenshots/admin-dashboard.png)
+*Comprehensive dashboard with analytics and KPIs*
+
+### Product Management
+![Product Management](screenshots/admin-products.png)
+*Complete CRUD operations for products*
+
+### Order Management
+![Order Management](screenshots/admin-orders.png)
+*Manage orders with filtering and status updates*
+
+### Order Details
+![Order Details](screenshots/order-detail.png)
+*Detailed order view with customer information*
+
+</details>
 ---
 
 ## 🙏 Acknowledgments
