@@ -1511,11 +1511,11 @@ SOFTWARE.
 
 ## 📬 Contact
 
-**Developer**: [Your Name]  
-**Email**: your-email@example.com  
-**GitHub**: [@yourusername](https://github.com/yourusername)  
-**LinkedIn**: [Your LinkedIn](https://linkedin.com/in/yourprofile)  
-**Portfolio**: [your-portfolio.com](https://your-portfolio.com)
+**Developer**: TejasGowda T R
+**Email**: tejaspavithra2002@gmail.com 
+**GitHub**: [@Tejas1024](https://github.com/Tejas1024)  
+**LinkedIn**: [@tejasgowda-t-r]( https://www.linkedin.com/in/tejasgowda-t-r)  
+ 
 
 ---
 
