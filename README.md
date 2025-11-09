@@ -1547,7 +1547,7 @@ Feature requests are welcome! Please provide:
 ![Admin Dashboard](./AdminDashboard.png)
 ![Product Management](./ProductManagement.png)
 ![Order Management](./OrderManagement.png)
-![Order Details](./OrderDetails.png)
+![Order Details](OrderDetails.png)
 
 
 ---
