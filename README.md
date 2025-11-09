@@ -1540,31 +1540,15 @@ Feature requests are welcome! Please provide:
 
 ### User Interface
 
-#### Home Page - Product Listing
-![Home Page](https://via.placeholder.com/800x400?text=Product+Listing+Page)
+![Home Page - Product Listing](./HomePage.png)
+![Product Details & Cart](./Cart.png)
+![Checkout Process](./Checkout.png)
+![Order History](./OrderHistory.png)
+![Admin Dashboard](./AdminDashboard.png)
+![Product Management](./ProductManagement.png)
+![Order Management](./OrderManagement.png)
+![Order Details](./OrderDetails.png)
 
-#### Product Details & Cart
-![Cart](https://via.placeholder.com/800x400?text=Shopping+Cart)
-
-#### Checkout Process
-![Checkout](https://via.placeholder.com/800x400?text=Checkout+Page)
-
-#### Order History
-![Orders](https://via.placeholder.com/800x400?text=Order+History)
-
-### Admin Interface
-
-#### Admin Dashboard
-![Admin Dashboard](https://via.placeholder.com/800x400?text=Admin+Dashboard)
-
-#### Product Management
-![Product Management](https://via.placeholder.com/800x400?text=Product+Management)
-
-#### Order Management
-![Order Management](https://via.placeholder.com/800x400?text=Order+Management)
-
-#### Order Details
-![Order Details](https://via.placeholder.com/800x400?text=Order+Details)
 
 ---
 
