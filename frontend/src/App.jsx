@@ -261,7 +261,7 @@ function ProductList({ token, onAddToCart }) {
           <select value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)}
             className="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none">
             <option value="">All Categories</option>
-            {categories.map(cat => <option key={cat.id} value={cat.slug}>{cat.name}</option>)}
+            {Array.isArray(categories) && categories.map(cat => <option key={cat.id} value={cat.slug}>{cat.name}</option>)}
           </select>
         </div>
       </div>
