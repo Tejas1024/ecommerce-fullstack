@@ -1280,16 +1280,33 @@ export default function App() {
   const [token, setToken] = useState(localStorage.getItem('token'));
   const [currentPage, setCurrentPage] = useState('home');
   const [cart, setCart] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (token) {
-      const userData = JSON.parse(localStorage.getItem('user') || '{}');
-      setUser(userData);
-      if (userData.role !== 'admin') {
-        loadCart();
+    const initializeAuth = async () => {
+      const storedToken = localStorage.getItem('token');
+      const storedUser = localStorage.getItem('user');
+
+      if (storedToken && storedUser) {
+        try {
+          const userData = JSON.parse(storedUser);
+          setToken(storedToken);
+          setUser(userData);
+
+          if (userData.role !== 'admin') {
+            await loadCart();
+          }
+        } catch (err) {
+          console.error('Failed to restore session:', err);
+          localStorage.removeItem('token');
+          localStorage.removeItem('user');
+        }
       }
-    }
-  }, [token]);
+      setLoading(false);
+    };
+
+    initializeAuth();
+  }, []);
 
   const loadCart = async () => {
     try {
@@ -1354,6 +1371,14 @@ export default function App() {
       throw err;
     }
   };
+
+  if (loading) {
+    return (
+      <div className="text-center py-12">
+        <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-indigo-600 border-t-transparent"></div>
+      </div>
+    );
+  }
 
   if (!user) {
     return <AuthPage onLogin={login} onRegister={register} />;
