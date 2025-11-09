@@ -1540,14 +1540,16 @@ Feature requests are welcome! Please provide:
 
 ### User Interface
 
-![Home Page - Product Listing](./HomePage.png)
-![Product Details & Cart](./Cart.png)
-![Checkout Process](./Checkout.png)
-![Order History](./OrderHistory.png)
-![Admin Dashboard](./AdminDashboard.png)
-![Product Management](./ProductManagement.png)
-![Order Management](./OrderManagement.png)
-![Order Details](OrderDetails.png)
+![Home Page](screenshots/home.png)
+![Cart](screenshots/cart.png)
+![Checkout](screenshots/checkout.png)
+![Order History](screenshots/orders.png)
+![Order Details](screenshots/order-detail.png)
+
+![Admin Dashboard](screenshots/admin-dashboard.png)
+![Product Management](screenshots/admin-products.png)
+![Order Management](screenshots/admin-orders.png)
+
 
 
 ---
