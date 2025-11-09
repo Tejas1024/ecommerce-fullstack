@@ -3,15 +3,39 @@ Django settings for ecommerce project.
 """
 from pathlib import Path
 from datetime import timedelta
-from decouple import config
+import os
+try:
+    from decouple import config
+except Exception:
+    import os
+    def config(key, default=None, cast=None):
+        """Fallback config() compatible with python-decouple's config.
+
+        Reads from environment variables using os.environ.get and applies
+        an optional cast. Handles boolean casting for common string forms.
+        """
+        val = os.environ.get(key, default)
+        # If no cast specified or value is None, return as-is
+        if cast is None or val is None:
+            return val
+        # Special handling for boolean casts
+        if cast is bool:
+            if isinstance(val, str):
+                return val.strip().lower() in ('1', 'true', 'yes', 'y', 't')
+            return bool(val)
+        try:
+            return cast(val)
+        except Exception:
+            # If casting fails, return the default
+            return default
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = config('SECRET_KEY', default='django-insecure-your-secret-key-change-in-production')
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-your-secret-key-change-in-production')
 
-DEBUG = config('DEBUG', default=True, cast=bool)
+DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost,127.0.0.1').split(',')
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
