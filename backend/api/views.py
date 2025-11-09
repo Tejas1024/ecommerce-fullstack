@@ -15,6 +15,9 @@ from .serializers import (
 from .permissions import IsAdmin
 import csv
 from datetime import datetime
+from io import StringIO
+import json
+from django.utils.text import slugify
 
 User = get_user_model()
 
@@ -238,8 +241,98 @@ class AdminProductViewSet(viewsets.ModelViewSet):
     filter_backends = [filters.SearchFilter, filters.OrderingFilter]
     search_fields = ['name', 'slug', 'category__name']
     ordering_fields = ['price', 'stock', 'created_at']
+    
+    @action(detail=False, methods=['post'])
+    def import_products(self, request):
+        """
+        Bulk import products from CSV or JSON file
+        POST /api/admin/products/import/
+        """
+        file = request.FILES.get('file')
+        if not file:
+            return Response({'error': 'No file provided'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        try:
+            file_content = file.read().decode('utf-8')
+            imported_count = 0
+            errors = []
+            
+            # Detect file type
+            if file.name.endswith('.json'):
+                # Handle JSON import
+                products_data = json.loads(file_content)
+                
+                for idx, product_data in enumerate(products_data):
+                    try:
+                        # Get or create category
+                        category_name = product_data.get('category', 'Uncategorized')
+                        category, _ = Category.objects.get_or_create(
+                            name=category_name,
+                            defaults={'slug': slugify(category_name)}
+                        )
+                        
+                        # Create product
+                        Product.objects.create(
+                            name=product_data['name'],
+                            slug=product_data.get('slug', slugify(product_data['name'])),
+                            category=category,
+                            description=product_data.get('description', ''),
+                            price=product_data['price'],
+                            weight=product_data.get('weight', 0),
+                            stock=product_data.get('stock', 0),
+                            image=product_data.get('image', ''),
+                            is_active=product_data.get('is_active', True)
+                        )
+                        imported_count += 1
+                    except Exception as e:
+                        errors.append(f"Row {idx + 1}: {str(e)}")
+            
+            elif file.name.endswith('.csv'):
+                # Handle CSV import
+                csv_file = StringIO(file_content)
+                reader = csv.DictReader(csv_file)
+                
+                for idx, row in enumerate(reader):
+                    try:
+                        category_name = row.get('category', 'Uncategorized')
+                        category, _ = Category.objects.get_or_create(
+                            name=category_name,
+                            defaults={'slug': slugify(category_name)}
+                        )
+                        
+                        Product.objects.create(
+                            name=row['name'],
+                            slug=row.get('slug', slugify(row['name'])),
+                            category=category,
+                            description=row.get('description', ''),
+                            price=float(row['price']),
+                            weight=float(row.get('weight', 0)),
+                            stock=int(row.get('stock', 0)),
+                            image=row.get('image', ''),
+                            is_active=row.get('is_active', 'true').lower() == 'true'
+                        )
+                        imported_count += 1
+                    except Exception as e:
+                        errors.append(f"Row {idx + 2}: {str(e)}")  # +2 because of header
+            else:
+                return Response(
+                    {'error': 'Invalid file format. Please upload CSV or JSON'},
+                    status=status.HTTP_400_BAD_REQUEST
+                )
+            
+            return Response({
+                'message': f'Successfully imported {imported_count} products',
+                'imported_count': imported_count,
+                'errors': errors
+            }, status=status.HTTP_200_OK)
+            
+        except Exception as e:
+            return Response(
+                {'error': f'Import failed: {str(e)}'},
+                status=status.HTTP_400_BAD_REQUEST
+            )
 
-# ============= Admin Order Views =============
+# ============= Admin Order Views ============= 
 class AdminOrderViewSet(viewsets.ModelViewSet):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer

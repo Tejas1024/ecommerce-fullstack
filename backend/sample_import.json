@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Wireless Mouse",
+    "slug": "wireless-mouse",
+    "category": "Electronics",
+    "description": "Ergonomic wireless mouse with long battery life",
+    "price": 599.00,
+    "weight": 0.15,
+    "stock": 50,
+    "image": "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=500",
+    "is_active": true
+  },
+  {
+    "name": "Mechanical Keyboard",
+    "slug": "mechanical-keyboard",
+    "category": "Electronics",
+    "description": "RGB mechanical gaming keyboard",
+    "price": 2999.00,
+    "weight": 0.8,
+    "stock": 30,
+    "image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=500",
+    "is_active": true
+  }
+]
