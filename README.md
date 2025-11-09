@@ -56,6 +56,23 @@ A production-ready, full-stack e-commerce application built with Django REST Fra
 ✅ **API Documentation** - RESTful API with clear endpoints  
 ✅ **Testing** - Comprehensive test suite included
 
+
+## 📸 Screenshots
+
+### User Interface
+
+![Home Page](screenshots/home.png)
+![Cart](screenshots/cart.png)
+![Checkout](screenshots/checkout.png)
+![Order History](screenshots/orders.png)
+![Order Details](screenshots/order-detail.png)
+
+![Admin Dashboard](screenshots/admin-dashboard.png)
+![Product Management](screenshots/admin-products.png)
+![Order Management](screenshots/admin-orders.png)
+
+
+
 ---
 
 ## ✨ Key Features
@@ -1536,23 +1553,6 @@ Feature requests are welcome! Please provide:
 
 ---
 
-## 📸 Screenshots
-
-### User Interface
-
-![Home Page](screenshots/home.png)
-![Cart](screenshots/cart.png)
-![Checkout](screenshots/checkout.png)
-![Order History](screenshots/orders.png)
-![Order Details](screenshots/order-detail.png)
-
-![Admin Dashboard](screenshots/admin-dashboard.png)
-![Product Management](screenshots/admin-products.png)
-![Order Management](screenshots/admin-orders.png)
-
-
-
----
 
 ## 🎯 Project Stats
 
