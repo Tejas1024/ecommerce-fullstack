@@ -1277,7 +1277,7 @@ function AdminPanel({ user, token, onLogout, currentPage, setCurrentPage }) {
 // Main App Component
 export default function App() {
   const [user, setUser] = useState(null);
-  const [token, setToken] = useState(localStorage.getItem('token'));
+  const [token, setToken] = useState(null);
   const [currentPage, setCurrentPage] = useState('home');
   const [cart, setCart] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -1294,7 +1294,7 @@ export default function App() {
           setUser(userData);
 
           if (userData.role !== 'admin') {
-            await loadCart();
+            await loadCart(storedToken);
           }
         } catch (err) {
           console.error('Failed to restore session:', err);
@@ -1308,9 +1308,9 @@ export default function App() {
     initializeAuth();
   }, []);
 
-  const loadCart = async () => {
+  const loadCart = async (authToken = token) => {
     try {
-      const data = await api.get('/cart/', token);
+      const data = await api.get('/cart/', authToken);
       setCart(data.results || data);
     } catch (err) {
       console.error('Failed to load cart:', err);
@@ -1327,7 +1327,7 @@ export default function App() {
         localStorage.setItem('token', data.tokens.access);
         localStorage.setItem('user', JSON.stringify(data.user));
         setCurrentPage(data.user.role === 'admin' ? 'admin-dashboard' : 'home');
-        if (data.user.role !== 'admin') loadCart();
+        if (data.user.role !== 'admin') loadCart(data.tokens.access);
         return data;
       }
       return { error: data.error || 'Login failed' };
@@ -1345,7 +1345,7 @@ export default function App() {
         localStorage.setItem('token', data.tokens.access);
         localStorage.setItem('user', JSON.stringify(data.user));
         setCurrentPage('home');
-        loadCart();
+        loadCart(data.tokens.access);
         return data;
       }
       return { error: data.error || 'Registration failed' };
@@ -1374,7 +1374,7 @@ export default function App() {
 
   if (loading) {
     return (
-      <div className="text-center py-12">
+      <div className="min-h-screen flex items-center justify-center">
         <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-indigo-600 border-t-transparent"></div>
       </div>
     );
