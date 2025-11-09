@@ -1632,7 +1632,6 @@ If you find this project useful, please consider giving it a star!
 
 **Made with ❤️ for Sepnoty Technologies Assignment**
 
-**Submission Date**: November 10, 2025, 3:00 PM IST
 
 ---
 
