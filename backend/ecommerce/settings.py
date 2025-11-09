@@ -4,21 +4,15 @@ Django settings for ecommerce project.
 from pathlib import Path
 from datetime import timedelta
 import os
+
+# Fallback config function if python-decouple is not available
 try:
     from decouple import config
 except Exception:
-    import os
     def config(key, default=None, cast=None):
-        """Fallback config() compatible with python-decouple's config.
-
-        Reads from environment variables using os.environ.get and applies
-        an optional cast. Handles boolean casting for common string forms.
-        """
         val = os.environ.get(key, default)
-        # If no cast specified or value is None, return as-is
         if cast is None or val is None:
             return val
-        # Special handling for boolean casts
         if cast is bool:
             if isinstance(val, str):
                 return val.strip().lower() in ('1', 'true', 'yes', 'y', 't')
@@ -26,7 +20,6 @@ except Exception:
         try:
             return cast(val)
         except Exception:
-            # If casting fails, return the default
             return default
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -133,8 +126,12 @@ SIMPLE_JWT = {
 # CORS Settings
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "http://localhost:3000",
     "http://127.0.0.1:3000",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
+
+# Custom User Model - CRITICAL
 AUTH_USER_MODEL = 'api.User'
