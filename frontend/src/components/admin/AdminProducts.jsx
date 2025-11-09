@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Plus, Edit, Trash2 } from 'lucide-react';
 import { api } from '../../utils/api';
-import ProductForm from './ProductForm';
+import ProductForm from '../../../components/admin/ProductForm';
 
 export default function AdminProducts({ token }) {
   const [products, setProducts] = useState([]);

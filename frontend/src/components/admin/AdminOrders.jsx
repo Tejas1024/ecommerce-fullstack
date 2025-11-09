@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Download, Eye } from 'lucide-react';
 import { api, API_BASE_URL } from '../../utils/api';
-import OrderDetail from './OrderDetail';
+import OrderDetail from '../../../components/admin/OrderDetail';
 
 export default function AdminOrders({ token }) {
   const [orders, setOrders] = useState([]);
