@@ -230,10 +230,13 @@ function ProductList({ token, onAddToCart }) {
 
   const loadCategories = async () => {
     try {
+      setCategoriesLoaded(false);
       const data = await api.get('/categories/', token);
       setCategories(data);
+      setCategoriesLoaded(true);
     } catch (err) {
       console.error('Failed to load categories:', err);
+      setCategoriesLoaded(false);
     }
   };
 
@@ -788,6 +791,7 @@ function AdminProducts({ token }) {
   const [showForm, setShowForm] = useState(false);
   const [editProduct, setEditProduct] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
+  const [categoriesLoaded, setCategoriesLoaded] = useState(false);
 
   useEffect(() => {
     loadProducts();
