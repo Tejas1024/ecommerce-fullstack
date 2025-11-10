@@ -721,11 +721,16 @@ function ProductForm({ token, categories, product, onClose, onRefresh }) {
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">Category *</label>
-          <select value={formData.category}
-            onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none" required>
+          <select 
+            value={formData.category}
+            onChange={(e) => setFormData({ ...formData, category: parseInt(e.target.value) || e.target.value })}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none" 
+            required
+          >
             <option value="">Select Category</option>
-            {Array.isArray(categories) && categories.map(cat => <option key={cat.id} value={cat.id}>{cat.name}</option>)}
+            {Array.isArray(categories) && categories.map(cat => (
+              <option key={cat.id} value={cat.id}>{cat.name}</option>
+            ))}
           </select>
         </div>
 
