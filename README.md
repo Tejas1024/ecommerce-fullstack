@@ -1631,11 +1631,5 @@ If you find this project useful, please consider giving it a star!
 [![GitHub stars](https://img.shields.io/github/stars/yourusername/ecommerce-fullstack?style=social)](https://github.com/yourusername/ecommerce-fullstack/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/yourusername/ecommerce-fullstack?style=social)](https://github.com/yourusername/ecommerce-fullstack/network/members)
 
----
-
-**Made with ❤️ for Sepnoty Technologies Assignment**
-
-
----
-
+ 
 </div>
